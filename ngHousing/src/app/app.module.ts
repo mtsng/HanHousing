@@ -9,6 +9,8 @@ import { appRoutes } from './routing';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { AddLocationComponent } from './components/addLocation/addLocation.component';
 
 import { Key } from './API_KEY';
 
@@ -16,7 +18,9 @@ import { Key } from './API_KEY';
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent
+    HomeComponent,
+    NavbarComponent,
+    AddLocationComponent
   ],
   imports: [
     BrowserModule,
