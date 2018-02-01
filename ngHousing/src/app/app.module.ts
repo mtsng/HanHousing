@@ -14,6 +14,8 @@ import { AddLocationComponent } from './components/addLocation/addLocation.compo
 
 import { Key } from './API_KEY';
 
+import { GoogleApiService } from './services/googleApi.service';
+
 
 @NgModule({
   declarations: [
@@ -31,7 +33,7 @@ import { Key } from './API_KEY';
     RouterModule.forRoot(appRoutes),
     HttpClientModule
   ],
-  providers: [],
+  providers: [GoogleApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
