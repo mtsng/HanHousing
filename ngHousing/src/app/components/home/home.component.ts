@@ -7,7 +7,5 @@ import { Component } from '@angular/core';
 })
 
 export class HomeComponent{
-  title: string = 'My first AGM Project';
-  lat: number = 51.678418;
-  lng: number = 7.809007;
+  public title: string = "Welcome";
 }
