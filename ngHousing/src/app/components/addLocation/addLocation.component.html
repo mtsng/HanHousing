@@ -2,3 +2,9 @@
 
 <input type="text" placeholder="Address" [(ngModel)]="input"/>
 <button (click)="submitAddress()">Submit</button>
+
+<div>
+  <agm-map [latitude]="location?.lat" [longitude]="location?.lng">
+  <agm-marker [latitude]="location?.lat" [longitude]="location?.lng"></agm-marker>
+</agm-map>
+</div>

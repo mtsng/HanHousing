@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { GoogleApiService } from '../../services/googleApi.service';
+import { Location } from '../../models/location.model';
 
 @Component({
   selector: 'app-addLocation',
@@ -9,10 +10,11 @@ import { GoogleApiService } from '../../services/googleApi.service';
 
 export class AddLocationComponent{
   public input: string;
-  private result: any;
+  private location: Location = new Location();
 
   constructor(private api: GoogleApiService){
-
+    this.location.lat = 47.6649281;
+    this.location.lng = -122.3805198;
   }
 
   public submitAddress(){
@@ -20,9 +22,8 @@ export class AddLocationComponent{
     let address = this.input.replace(/\s/g, '+');
     this.api.getCoordinates(address).subscribe(
       data => {
-        this.result = data;
-        console.log(data);
-        console.log(data.results[0].geometry.location);
+        this.location = data.results[0].geometry.location;
+        //console.log(this.location);
       });
   }
 }
