@@ -1,10 +1,24 @@
 <h1>Add a Location</h1>
 
-<input type="text" placeholder="Address" [(ngModel)]="input"/>
-<button (click)="submitAddress()">Submit</button>
+<div>
+  <input type="text" placeholder="Address" [(ngModel)]="input"/>
+  <button (click)="submitAddress()">Preview</button>
+  <h2>Contact Info</h2>
+  <input type="text" [(ngModel)]="contact.name" value="contact.name"/><br>
+  <input type="text" [(ngModel)]="contact.email" value="contact.email"/><br>
+  <input type="text" [(ngModel)]="contact.phone" value="contact.phone"/>
+  <button>Submit</button>
+</div>
 
 <div class="map">
   <agm-map [latitude]="location?.lat" [longitude]="location?.lng">
-    <agm-marker [latitude]="location?.lat" [longitude]="location?.lng"></agm-marker>
+    <agm-marker [latitude]="location?.lat" [longitude]="location?.lng">
+      <agm-info-window>
+        <strong>Contact Info</strong><br>
+        <p>{{contact.name}}</p>
+        <p>{{contact.email}}</p>
+        <p>{{contact.phone}}</p>
+      </agm-info-window>
+    </agm-marker>
   </agm-map>
 </div>

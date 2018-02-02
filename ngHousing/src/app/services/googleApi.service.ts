@@ -12,7 +12,7 @@ export class GoogleApiService {
 
   }
 
-  public getCoordinates(address: string){
+  public getCoordinates(address: string): Observable<any>{
     return this.http.get(this.url + address + this.key);
   }
 }
