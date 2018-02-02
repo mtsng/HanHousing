@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AddLocationComponent } from './components/addLocation/addLocation.component';
+import { FindLocationComponent } from './components/findLocation/findLocation.component';
 
 import { Key } from './API_KEY';
 
@@ -22,7 +23,8 @@ import { GoogleApiService } from './services/googleApi.service';
     AppComponent,
     HomeComponent,
     NavbarComponent,
-    AddLocationComponent
+    AddLocationComponent,
+    FindLocationComponent
   ],
   imports: [
     BrowserModule,
