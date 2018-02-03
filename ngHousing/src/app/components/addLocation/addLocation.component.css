@@ -4,5 +4,11 @@ agm-map {
 }
 
 .map {
+  border-style: solid;
   float: right;
+}
+
+.container {
+  margin-left: 5px;
+  margin-top: 30px;
 }

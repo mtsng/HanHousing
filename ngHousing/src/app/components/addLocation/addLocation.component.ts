@@ -10,20 +10,20 @@ import { Contact } from '../../models/contact.model';
 })
 
 export class AddLocationComponent{
-  public input: string;
+  public address: string;
   private location: Location = new Location();
   public contact: Contact;
 
   constructor(private api: GoogleApiService){
     this.location.lat = 47.6649281;
     this.location.lng = -122.3805198;
-    this.contact = new Contact("Jeff", "jeff@jeff.com", "(714) 878-9000");
+    this.contact = new Contact();
   }
 
   public submitAddress(){
     //TODO null check
     //TODO unsubscribe
-    let address = this.input.replace(/\s/g, '+');
+    let address = this.address.replace(/\s/g, '+');
     this.api.getCoordinates(address).subscribe(
       data => {
         this.location = data.results[0].geometry.location;
