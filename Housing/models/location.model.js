@@ -1,8 +1,18 @@
 var mongoose = require('mongoose');
 
+var contactSchema = new mongoose.Schema({
+  name: String,
+  email: String,
+  phone: String
+});
+
 var locationSchema = new mongoose.Schema({
-  title: String,
-  description: String,
+  contact: contactSchema,
+  lat: Number,
+  lng: Number,
+  address: String,
+  label: String,
+  draggable: Boolean,
   create_date: Date
 });
 

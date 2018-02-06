@@ -1,4 +1,5 @@
 var Location = require('../models/location.model');
+var Contact = require('../models/contact.model');
 
 _this = this;
 
@@ -14,12 +15,23 @@ exports.getLocations = async function(){
   return locations;
 }
 
-exports.addLocation = async function(location) {
+exports.addLocation = async function(location, contact) {
+  var newContact = new Contact({
+      name: contact.name,
+      email: contact.email,
+      phone: contact.phone
+  });
+
   var newLocation = new Location({
-    title: location.title,
-    description: location.description,
+    lat: location.lat,
+    lng: location.lng,
+    address: location.address,
+    label: location.label,
+    draggable: location.draggable,
     create_date: new Date()
   });
+
+  newLocation.contact = newContact;
 
   try {
     var savedLocation = await newLocation.save();

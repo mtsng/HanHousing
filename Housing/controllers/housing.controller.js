@@ -15,14 +15,22 @@ exports.getLocations = async function(req, res, next){
 }
 
 exports.addLocation = async function(req, res, next){
-
   var location = {
-    title: req.body.title,
-    description: req.body.description
+    lat: req.body.lat,
+    lng: req.body.lng,
+    address: req.body.address,
+    label: req.body.label,
+    draggable: req.body.draggable
+  };
+
+  var contact = {
+      name: req.body.name,
+      email: req.body.email,
+      phone: req.body.phone
   };
 
   try {
-    var addedLocation = await housingService.addLocation(location);
+    var addedLocation = await housingService.addLocation(location, contact);
   }
   catch(e) {
     return res.status(400).json({status: 400, message: "Location was not added", data: "" + e});
