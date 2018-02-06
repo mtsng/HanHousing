@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { GoogleApiService } from '../../services/googleApi.service';
+import { HousingService } from '../../services/housing.service';
 import { Location } from '../../models/location.model';
 import { Contact } from '../../models/contact.model';
 
@@ -14,7 +15,7 @@ export class AddLocationComponent{
   private location: Location = new Location();
   public contact: Contact;
 
-  constructor(private api: GoogleApiService){
+  constructor(private api: GoogleApiService, private housing: HousingService){
     this.location.lat = 47.6649281;
     this.location.lng = -122.3805198;
     this.contact = new Contact();
@@ -31,6 +32,15 @@ export class AddLocationComponent{
       },
       error => {
         console.log(error);
+      });
+  }
+
+  public createLocation() {
+    //TODO null check
+    //TODO unsubsribe
+    this.housing.createLocation(this.location, this.contact).subscribe(
+      data => {
+        console.log("Good");
       });
   }
 }

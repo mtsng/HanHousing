@@ -16,7 +16,7 @@ import { FindLocationComponent } from './components/findLocation/findLocation.co
 import { Key } from './API_KEY';
 
 import { GoogleApiService } from './services/googleApi.service';
-
+import { HousingService } from './services/housing.service';
 
 @NgModule({
   declarations: [
@@ -35,7 +35,10 @@ import { GoogleApiService } from './services/googleApi.service';
     RouterModule.forRoot(appRoutes),
     HttpClientModule
   ],
-  providers: [GoogleApiService],
+  providers: [
+    GoogleApiService,
+    HousingService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
