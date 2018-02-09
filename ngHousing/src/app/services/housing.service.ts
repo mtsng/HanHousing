@@ -22,10 +22,10 @@ export class HousingService {
     return this.http.post(`${this.housingUrl}`, data);
   }
 
-  getLocation(): Observable<Location[]> {
+  getLocations(): Observable<any> {
     return this.http.get(this.housingUrl)
     .map(res => {
-      return res["data"].docs as Location[];
+      return res["data"] as Location[];
     });
   }
 
