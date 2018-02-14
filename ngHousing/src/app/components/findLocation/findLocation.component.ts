@@ -14,11 +14,14 @@ import { ApiLocation } from '../../models/api-location.model';
 export class FindLocationComponent implements OnInit{
   public lat = 51.673858;
   public lng = 7.815982;
+  private location: Location = new Location();
 
   public locations: Location[] = [];
+  public address;
 
-  constructor(private housing: HousingService){
-    
+  constructor(private housing: HousingService, private api: GoogleApiService){
+    this.location.lat = 51.673858;
+    this.location.lng = 7.815982;
   }
 
   ngOnInit(){
@@ -32,18 +35,17 @@ export class FindLocationComponent implements OnInit{
       });
   }
 
-  public markers: Marker[] = [
-    {
-		  lat: 51.673858,
-		  lng: 7.815982,
-		  label: 'A',
-		  draggable: true
-	  },
-	  {
-		  lat: 51.373858,
-		  lng: 7.215982,
-		  label: 'B',
-		  draggable: false
-	  }
-  ];
+  public submitAddress(){
+    //TODO null check
+    //TODO unsubscribe
+    let address = this.address.replace(/\s/g, '+');
+    this.api.getCoordinates(address).subscribe(
+      data => {
+        this.location = data.results[0].geometry.location;
+        //console.log(this.location);
+      },
+      error => {
+        console.log(error);
+      });
+  }
 }

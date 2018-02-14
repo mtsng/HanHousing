@@ -1,10 +1,20 @@
-<agm-map [latitude]="lat" [longitude]="lng">
+<div class="container">
+  <h2>Location</h2>
+  <div class="form-group row">
+    <div class="col-4">
+        <input type="text" class="form-control" placeholder="Enter City, State" [(ngModel)]="address"/>
+    </div>
+    <button class="btn btn-info" (click)="submitAddress()">Preview</button>
+  </div>
+</div>
+
+<agm-map [latitude]="location.lat" [longitude]="location.lng">
  <agm-marker
-     *ngFor="let m of markers; let i = index"
-     [latitude]="m.lat"
-     [longitude]="m.lng"
-     [label]="m.label"
-     [markerDraggable]="m.draggable">
+     *ngFor="let l of locations; let i = index"
+     [latitude]="l.lat"
+     [longitude]="l.lng"
+     [label]="l.label"
+     [markerDraggable]="l.draggable">
 
    <agm-info-window>
      <strong>InfoWindow content</strong>
