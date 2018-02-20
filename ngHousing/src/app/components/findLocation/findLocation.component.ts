@@ -12,16 +12,14 @@ import { ApiLocation } from '../../models/api-location.model';
 })
 
 export class FindLocationComponent implements OnInit{
-  public lat = 51.673858;
-  public lng = 7.815982;
   private location: Location = new Location();
 
   public locations: Location[] = [];
   public address;
 
   constructor(private housing: HousingService, private api: GoogleApiService){
-    this.location.lat = 51.673858;
-    this.location.lng = 7.815982;
+    this.location.lat = 38.953989;
+    this.location.lng = -77.3512858;
   }
 
   ngOnInit(){
